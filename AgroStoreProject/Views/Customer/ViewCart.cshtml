@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AgroStoreProject.Models.Cart>
+
+@{
+    ViewBag.Title = "ViewCart";
+    Layout = "~/Views/Shared/_LayoutPageCustomer.cshtml";
+
+}
+@{
+    int total = 0;
+}
+
+<h2>My Cart</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CartProdPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CartProdQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CartBill)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDetail.ProdName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CartProdPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CartProdQty)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CartBill)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductDetail.ProdName)
+    </td>
+    <td>
+        @Html.ActionLink("Order Now", "OrderNow",null, new {@class="btn", cid = item.CartID })
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "Delete_From_Cart", new { @class = "btn", num = (TempData.Peek("CustomerID").ToString()), cid = item.CartID })
+    </td>
+</tr>
+    }
+    @*@Html.ActionLink("Order", "OrderNow", new { num = (TempData.Peek("CustomerID").ToString())})*@
+
+</table>
+@foreach (var item in Model)
+{
+    total= Convert.ToInt32(total+item.CartBill);
+}
+@{
+    TempData["TotalPrice"]=null;
+    TempData["TotalPrice"] = @total;
+
+}
+<div> 
+    <p>Cart Total:</p>
+    @total
+</div>

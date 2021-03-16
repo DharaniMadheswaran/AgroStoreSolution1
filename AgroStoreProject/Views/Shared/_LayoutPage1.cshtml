@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+
+            li:last-child {
+                border-right: none;
+            }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                li a:hover:not(.active) {
+                    background-color: #111;
+                }
+
+        .active {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            @Html.ActionLink("Products", "HomePage", "Login", new { area = "" }, new { @class = "navbar-brand" })
+
+        </li>
+        <li>
+            @Html.ActionLink("Log Off", "CustomerLogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
+        </li>
+        <li>
+            @Html.ActionLink("View Cart", "ViewCart", "Customer", new { area = "" }, new { @class = "navbar-brand" })
+        </li>
+        <li>
+            @Html.ActionLink("View Orders", "ViewOrderDetails", "Customer", new { area = "" }, new { @class = "navbar-brand" })
+        </li>
+
+    </ul>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>: PRODUCTS :</title>
+    <style media="screen">
+        .add-head {
+            border-bottom: 3px solid #c90869;
+        }
+
+        .products {
+            position: relative;
+        }
+
+        .add-cart-btn {
+            padding: 8px 10px 8px 10px;
+            border: 2px solid #fff;
+            margin: 10px;
+            border-radius: 1px;
+        }
+
+            .add-cart-btn:hover {
+                transition: .7s;
+                border: 2px solid #2ca619;
+            }
+
+        .product-item {
+            background: #dbd7d9;
+            width: 235px;
+            height: 250px;
+            border-radius: 8px;
+            margin: 20px;
+        }
+
+        .product-item {
+            box-shadow: 5px 5px 5px 1px #888888;
+        }
+
+            .product-item img {
+                margin-top: 15px;
+                border: 3px solid #555;
+            }
+
+        .item-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #422835;
+            text-align: center;
+            margin: 10px 5px 0 10px;
+        }
+
+        .img-border {
+            border-bottom: 2px solid #111;
+            width: 200px;
+            margin-top: 10px;
+        }
+
+        .rate {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h2 class="add-head">Available Products</h2><center>
+                <div class="row">
+                    <div class="products">
+
+                        <!-- dynamic -->
+
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZHVjdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" width="150" height="100">
+                                <div class="img-border"></div>
+                                <p class="item-text">Test</p>
+                                <p class="item-text rate"> Rs. 300</p>
+                                <button class="add-cart-btn btn btn-success" onclick="" name="button">Add To Cart</button>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZHVjdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" width="150" height="100">
+                                <div class="img-border"></div>
+                                <p class="item-text">Test</p>
+                                <p class="item-text rate"> Rs. 300</p>
+                                <button class="add-cart-btn btn btn-success" onclick="" name="button">Add To Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZHVjdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" width="150" height="100">
+                                <div class="img-border"></div>
+                                <p class="item-text">Test</p>
+                                <p class="item-text rate"> Rs. 300</p>
+                                <button class="add-cart-btn btn btn-success" onclick="" name="button">Add To Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZHVjdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" width="150" height="100">
+                                <div class="img-border"></div>
+                                <p class="item-text">Test</p>
+                                <p class="item-text rate"> Rs. 300</p>
+                                <button class="add-cart-btn btn btn-success" onclick="" name="button">Add To Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZHVjdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" width="150" height="100">
+                                <div class="img-border"></div>
+                                <p class="item-text">Test</p>
+                                <p class="item-text rate"> Rs. 300</p>
+                                <button class="add-cart-btn btn btn-success" onclick="" name="button">Add To Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZHVjdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" width="150" height="100">
+                                <div class="img-border"></div>
+                                <p class="item-text">Test</p>
+                                <p class="item-text rate"> Rs. 300</p>
+                                <button class="add-cart-btn btn btn-success" onclick="" name="button">Add To Cart</button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+    </div>
+</body>
+</html>

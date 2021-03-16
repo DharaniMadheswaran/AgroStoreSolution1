@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<style>
+    body {
+        background-image: url(https://hougumlaw.com/wp-content/uploads/2016/05/light-website-backgrounds-light-color-background-images-light-color-background-images-for-website-1024x640.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+   
+
+</style>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="float-left">
+                    <a class="navbar-brand" href="@Url.Action("AdminLogin", "Login")">
+                        <img src="~/ProductImages/logo1.jpg" width="40" height="20" class="d-inline-block align-top" alt="">AgroStore
+                    </a>
+                </div>
+                <div>
+                    <div>
+                       
+                                @Html.ActionLink("View Orders", "ViewAllOrderDetails", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+
+                           
+                                @Html.ActionLink("Add products", "AddProductDetails", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+                            
+                                @Html.ActionLink("Log Off", "AdminLogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                            
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            
+        </footer>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+
+</body>
+</html>

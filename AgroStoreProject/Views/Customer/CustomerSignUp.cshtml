@@ -1,0 +1,233 @@
+﻿@model AgroStoreProject.Models.CustomerDetail
+
+@{
+    ViewBag.Title = "CustomerSignUp";
+    Layout = null;
+}
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/Content/LoginRegister.css" type="text/css"/>
+</head>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="container">
+            <div class="row">
+
+                <!-- Mixins-->
+                <!-- Pen Title-->
+
+                <div class="container">
+                    <div class="card"></div>
+                    <div class="card">
+                        <h1 class="title">Register</h1>
+                        <form>
+                            <div class="input-container">
+
+                                @*@Html.LabelFor(model => model.CustFirstName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="col-md-10">
+                                    First Name
+                                    @Html.TextBoxFor(model => model.CustFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustFirstName, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="bar"></div>
+                            </div>
+
+                            <div class="input-container">
+
+                                @*@Html.LabelFor(model => model.CustLastName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="col-md-10">
+                                    Last Name
+                                    @Html.TextBoxFor(model => model.CustLastName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustLastName, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="bar"></div>
+                            </div>
+                            <div class="input-container">
+
+                                @*@Html.LabelFor(model => model.adPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="col-md-10">
+                                    MobileNumber
+                                    @Html.TextBoxFor(model => model.CustMobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustMobileNumber, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="bar"></div>
+                            </div>
+                            <div class="input-container">
+
+                                @*@Html.LabelFor(model => model.adPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="col-md-10">
+                                    Email Address
+                                    @Html.TextBoxFor(model => model.CustEmailId, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustEmailId, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="bar"></div>
+                            </div>
+                            <div class="input-container">
+
+                                @*@Html.LabelFor(model => model.adPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                                <div class="col-md-10">
+                                    Password
+                                    @Html.TextBoxFor(model => model.CustPwd, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustPwd, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="bar"></div>
+                            </div>
+                            <div class="input-container">
+
+                                @*@Html.LabelFor(model => model.adPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="col-md-10">
+                                    Address Line 1
+                                    @Html.TextBoxFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="bar"></div>
+                            </div>
+                            <div class="input-container">
+
+                                @*@Html.LabelFor(model => model.adPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="col-md-10">
+                                    Address Line 1
+                                    @Html.TextBoxFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="bar"></div>
+                            </div>
+                            <div class="input-container">
+
+                                @*@Html.LabelFor(model => model.adPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="col-md-10">
+                                    District
+                                    @Html.TextBoxFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="bar"></div>
+                            </div>
+                            <div class="input-container">
+
+                                @*@Html.LabelFor(model => model.adPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                <div class="col-md-10">
+                                    Pincode
+                                    @Html.TextBoxFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="bar"></div>
+                            </div>
+                            <div class="button-container">
+
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Sign Up" class="btn btn-outline-primary" />
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!-- Portfolio--><a id="portfolio" href="http://pkshopy.com/farooqshad/" title="View my portfolio!"><i class="fa fa-link"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    @*<div class="form-horizontal" margin="50px">
+        <h4>CustomerDetail</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustFirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustLastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustLastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustLastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustMobileNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustMobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustMobileNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustEmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustEmailId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustEmailId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustPwd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustPwd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustPwd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressLine1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressLine2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.District, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pincode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Signup" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}*@
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

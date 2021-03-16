@@ -1,0 +1,127 @@
+﻿@model IEnumerable<AgroStoreProject.Models.ProductDetail>
+
+@{
+    ViewBag.Title = "HomePage";
+
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>AgroStore</title>
+    <style media="screen">
+        .add-head {
+            border-bottom: 3px solid #c90869;
+        }
+
+        .products {
+            position: relative;
+        }
+
+        .add-cart-btn {
+            padding: 8px 10px 8px 10px;
+            border: 2px solid #fff;
+            margin: 10px;
+            border-radius: 1px;
+        }
+
+        .add-cart-btn:hover {
+                transition: .7s;
+                border: 2px solid #2ca619;
+        }
+
+        .product-item {
+            background: #fff;
+            width: 235px;
+            height: 350px;
+            border-radius: 8px;
+            margin: 20px;
+        }
+
+        .product-item {
+            box-shadow: 5px 5px 5px 1px #888888;
+        }
+
+            .product-item img {
+                margin-top: 25px;
+                margin-top: 25px;
+                border: 3px solid #555;
+            }
+
+        .item-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: midnightblue;
+            text-align: center;
+            margin: 10px 5px 0 10px;
+        }
+
+        .img-border {
+            border-bottom: 2px solid #111;
+            width: 200px;
+            margin-top: 20px;
+        }
+
+        .rate {
+            color: brown ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h2 class="add-head">Products</h2>
+            </center>
+                <div class="row">
+                    <div class="products">
+
+                        <!-- dynamic -->
+                        @foreach (var item in Model)
+                         {
+                            <div class="col-md-3" style="margin:10px;">
+                                <div class="product-item">
+                                    @*<div>
+                                        @Html.DisplayNameFor(modelItem => item.ProdSavings)
+                                    </div>*@
+                                     
+                                  
+                                    <br />
+                                    <img src="@Url.Content(item.ProdImage)" width="200" height="100">
+                                    <div class="img-border"></div>
+                                    <p class="item-text">@Html.DisplayFor(modelItem => item.ProdName)</p>
+                                    <p class="item-text rate">
+                                       Our Price Rs.
+                                        @Html.DisplayFor(modelItem => item.ProdPrice)<br />
+                                        MRP Rs.
+                                        @Html.DisplayFor(modelItem => item.ProdMRP)<br />
+
+                                    </p>
+                                    <p class="item-text text-danger">@Html.DisplayFor(modelItem => item.isAvailable)</p>
+                                    <button class="add-cart-btn btn btn-success" onclick="location.href='@Url.Action("AddToCart", "Customer",new { Pid=item.ProdID})'" name="button">Add To Cart</button>                                    @*@Html.ActionLink("Add To Cart", "AddToCart", new { @class = "add-cart-btn btn btn-success", Pid = item.ProdID })*@
+
+                                </div>
+                            </div>
+                         }
+                        </div>
+                </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

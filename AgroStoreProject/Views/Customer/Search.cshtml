@@ -1,0 +1,119 @@
+﻿@model IEnumerable<AgroStoreProject.Models.ProductDetail>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutPageCustomer.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <title>Search</title>
+</head>
+<body>
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <div class="container">
+        <br /><br />
+        <label> Choose Type of Search</label>
+        <select id="searchBy" class="form-control">
+            <option value="ProdCategory"> Category</option>
+        </select>
+        <br />
+        <label> Enter Key</label>
+        <div style="display:flex;">
+            <input class="form-control" id="search" />
+            <input class="btn btn-primary" type="submit" id="SearchBtn" value="Search" />
+        </div>
+        <br /><br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Product Image</th>
+                    <th>Product Price</th>
+                    <th>Product MRP</th>
+                    <th>Product Quantity</th>
+                    <th>Is Available</th>
+                    <th>Product Category </th>
+                    <th>Product Description </th>
+                    <th>Product Size </th>
+                </tr>
+            </thead>
+            <tbody id="DataSearching">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProdID</td>
+                        <td>@item.ProdName</td>
+                        <td>@item.ProdImage</td>
+                        <td>@item.ProdMRP</td>
+                        <td>@item.ProdQuantity</td>
+                        <td>@item.isAvailable</td>
+                        <td>@item.ProdCategory</td>
+                        <td>@item.ProdDescription </td>
+                        <td>@item.ProdSize </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <p> @ViewBag.error </p>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $("#search").keyup(function () {
+                var SearchBy = $("#searchBy").val();
+                var SearchValue = $("#search").val();
+                var SetData = $("#DataSearching");
+                SetData.html("");
+
+                $.ajax({
+                    type: "post",
+                    url: "/Customer/GetSearchData?SearchBy=" + SearchBy + "&SearchValue=" + SearchValue,
+                    contentType: "html",
+                    success: function (result) {
+                        if (result.length == 0) {
+                            SetData.append('<tr><td>No Results Found</td></tr>');
+                        }
+                        else {
+                            var Data = '';
+                            $.each(result, function (index, value) {
+                                Data += '<tr>';
+                                Data += '<td>' + value.ProdID + '</td>';
+                                Data += '<td>' + value.ProdName + '</td>';
+                                Data += '<td>' + value.ProdImage + '</td>';
+                                Data += '<td>' + value.ProdMRP + '</td>';
+                                Data += '<td>' + value.ProdQuantity + '</td>';
+                                Data += '<td>' + value.isAvailable + '</td>';
+                                Data += '<td>' + value.ProdCategory + '</td>';
+                                Data += '<td>' + value.ProdDescription + '</td>';
+                                Data += '<td>' + value.ProdSize + '</td>';
+                                Data += '</tr>';
+
+                            });
+                            SetData.append(Data);
+
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

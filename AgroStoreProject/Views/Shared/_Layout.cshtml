@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="float-left">
+                    <a class="navbar-brand" href="@Url.Action("AdminLogin", "Login")">
+                        <img src="~/ProductImages/logo1.jpg" width="40" height="20" class="d-inline-block align-top" alt="">AgroStore
+                    </a>
+                </div>
+                <div>
+                    @Html.ActionLink("Products", "HomePage", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Login", "CustomerLogin", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("SignUp", "CustomerSignUp", "Customer", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("View Cart", "ViewCart", "Customer", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("View Orders", "ViewOrderDetails", "Customer", new { area = "" }, new { @class = "navbar-brand" })
+
+                </div>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+        </footer>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+
+</body>
+</html>

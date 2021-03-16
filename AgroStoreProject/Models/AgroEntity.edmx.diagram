@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c1bad02cb0e545279ee25c8441d3254d" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="AgroStoreModel.Cart" Width="1.5" PointX="3.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroStoreModel.CustomerDetail" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroStoreModel.OrderDetail" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroStoreModel.ProductDetail" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="AgroStoreModel.FK__Cart__MobileNumb__625A9A57" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroStoreModel.FK__Cart__ProdID__634EBE90" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroStoreModel.FK__OrderDeta__Mobil__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroStoreModel.FK__OrderDeta__ProdI__05D8E0BE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AgroStoreModel.AdminLogin" Width="1.5" PointX="8.25" PointY="5.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

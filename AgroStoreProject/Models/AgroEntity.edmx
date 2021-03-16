@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AgroStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminLogin">
+          <Key>
+            <PropertyRef Name="adMobileNumber" />
+          </Key>
+          <Property Name="adMobileNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="adPassword" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="10" />
+          <Property Name="ProdID" Type="varchar" MaxLength="20" />
+          <Property Name="CartProdPrice" Type="float" />
+          <Property Name="CartProdQty" Type="int" />
+          <Property Name="CartBill" Type="float" />
+        </EntityType>
+        <EntityType Name="CustomerDetails">
+          <Key>
+            <PropertyRef Name="CustMobileNumber" />
+          </Key>
+          <Property Name="role" Type="varchar" MaxLength="20" />
+          <Property Name="CustFirstName" Type="varchar" MaxLength="20" />
+          <Property Name="CustLastName" Type="varchar" MaxLength="20" />
+          <Property Name="CustMobileNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CustEmailId" Type="varchar" MaxLength="100" />
+          <Property Name="CustPwd" Type="varchar" MaxLength="20" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="1000" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="1000" />
+          <Property Name="District" Type="varchar" MaxLength="40" />
+          <Property Name="Pincode" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="MobileNumber" Type="varchar" MaxLength="10" />
+          <Property Name="ProdID" Type="varchar" MaxLength="20" />
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderPrice" Type="float" />
+          <Property Name="OrderDate" Type="date" />
+          <Property Name="OrderStatus" Type="varchar" MaxLength="10" />
+          <Property Name="OrderCount" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductDetails">
+          <Key>
+            <PropertyRef Name="ProdID" />
+          </Key>
+          <Property Name="ProdID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProdName" Type="varchar" MaxLength="30" />
+          <Property Name="ProdImage" Type="varchar(max)" />
+          <Property Name="ProdPrice" Type="float" />
+          <Property Name="ProdMRP" Type="float" />
+          <Property Name="ProdSavings" Type="float" />
+          <Property Name="ProdQuantity" Type="int" />
+          <Property Name="isAvailable" Type="varchar" MaxLength="10" />
+          <Property Name="ProdCategory" Type="varchar" MaxLength="50" />
+          <Property Name="ProdCategoryID" Type="varchar" MaxLength="20" />
+          <Property Name="ProdDescription" Type="varchar(max)" />
+          <Property Name="ProdExpiryDate" Type="date" />
+          <Property Name="ProdSize" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK__Cart__MobileNumb__625A9A57">
+          <End Role="CustomerDetails" Type="Self.CustomerDetails" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerDetails">
+              <PropertyRef Name="CustMobileNumber" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="MobileNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__ProdID__634EBE90">
+          <End Role="ProductDetails" Type="Self.ProductDetails" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductDetails">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Mobil__04E4BC85">
+          <End Role="CustomerDetails" Type="Self.CustomerDetails" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerDetails">
+              <PropertyRef Name="CustMobileNumber" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="MobileNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__ProdI__05D8E0BE">
+          <End Role="ProductDetails" Type="Self.ProductDetails" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductDetails">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AgroStoreModelStoreContainer">
+          <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductDetails" EntityType="Self.ProductDetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cart__MobileNumb__625A9A57" Association="Self.FK__Cart__MobileNumb__625A9A57">
+            <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__ProdID__634EBE90" Association="Self.FK__Cart__ProdID__634EBE90">
+            <End Role="ProductDetails" EntitySet="ProductDetails" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Mobil__04E4BC85" Association="Self.FK__OrderDeta__Mobil__04E4BC85">
+            <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__ProdI__05D8E0BE" Association="Self.FK__OrderDeta__ProdI__05D8E0BE">
+            <End Role="ProductDetails" EntitySet="ProductDetails" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AgroStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProdID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CartProdPrice" Type="Double" />
+          <Property Name="CartProdQty" Type="Int32" />
+          <Property Name="CartBill" Type="Double" />
+          <NavigationProperty Name="CustomerDetail" Relationship="Self.FK__Cart__MobileNumb__625A9A57" FromRole="Cart" ToRole="CustomerDetails" />
+          <NavigationProperty Name="ProductDetail" Relationship="Self.FK__Cart__ProdID__634EBE90" FromRole="Cart" ToRole="ProductDetails" />
+        </EntityType>
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="CustMobileNumber" />
+          </Key>
+          <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CustFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CustLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CustMobileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustEmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Pincode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__MobileNumb__625A9A57" FromRole="CustomerDetails" ToRole="Cart" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Mobil__04E4BC85" FromRole="CustomerDetails" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProdID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderPrice" Type="Double" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="OrderStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="OrderCount" Type="Int32" />
+          <NavigationProperty Name="CustomerDetail" Relationship="Self.FK__OrderDeta__Mobil__04E4BC85" FromRole="OrderDetails" ToRole="CustomerDetails" />
+          <NavigationProperty Name="ProductDetail" Relationship="Self.FK__OrderDeta__ProdI__05D8E0BE" FromRole="OrderDetails" ToRole="ProductDetails" />
+        </EntityType>
+        <EntityType Name="ProductDetail">
+          <Key>
+            <PropertyRef Name="ProdID" />
+          </Key>
+          <Property Name="ProdID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProdName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ProdImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProdPrice" Type="Double" />
+          <Property Name="ProdMRP" Type="Double" />
+          <Property Name="ProdSavings" Type="Double" />
+          <Property Name="ProdQuantity" Type="Int32" />
+          <Property Name="isAvailable" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProdCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProdCategoryID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ProdDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProdExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="ProdSize" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__ProdID__634EBE90" FromRole="ProductDetails" ToRole="Cart" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__ProdI__05D8E0BE" FromRole="ProductDetails" ToRole="OrderDetails" />
+        </EntityType>
+        <Association Name="FK__Cart__MobileNumb__625A9A57">
+          <End Role="CustomerDetails" Type="Self.CustomerDetail" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerDetails">
+              <PropertyRef Name="CustMobileNumber" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="MobileNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__ProdID__634EBE90">
+          <End Role="ProductDetails" Type="Self.ProductDetail" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductDetails">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Mobil__04E4BC85">
+          <End Role="CustomerDetails" Type="Self.CustomerDetail" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerDetails">
+              <PropertyRef Name="CustMobileNumber" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="MobileNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__ProdI__05D8E0BE">
+          <End Role="ProductDetails" Type="Self.ProductDetail" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductDetails">
+              <PropertyRef Name="ProdID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AgroStoreEntitiesNew" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetail" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="ProductDetails" EntityType="Self.ProductDetail" />
+          <AssociationSet Name="FK__Cart__MobileNumb__625A9A57" Association="Self.FK__Cart__MobileNumb__625A9A57">
+            <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__ProdID__634EBE90" Association="Self.FK__Cart__ProdID__634EBE90">
+            <End Role="ProductDetails" EntitySet="ProductDetails" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Mobil__04E4BC85" Association="Self.FK__OrderDeta__Mobil__04E4BC85">
+            <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__ProdI__05D8E0BE" Association="Self.FK__OrderDeta__ProdI__05D8E0BE">
+            <End Role="ProductDetails" EntitySet="ProductDetails" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <EntitySet Name="AdminLogins" EntityType="AgroStoreModel.AdminLogin" />
+        </EntityContainer>
+        <EntityType Name="AdminLogin">
+          <Key>
+            <PropertyRef Name="adMobileNumber" />
+          </Key>
+          <Property Name="adMobileNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="adPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AgroStoreModelStoreContainer" CdmEntityContainer="AgroStoreEntitiesNew">
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="AgroStoreModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+                <ScalarProperty Name="CartProdPrice" ColumnName="CartProdPrice" />
+                <ScalarProperty Name="CartProdQty" ColumnName="CartProdQty" />
+                <ScalarProperty Name="CartBill" ColumnName="CartBill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerDetails">
+            <EntityTypeMapping TypeName="AgroStoreModel.CustomerDetail">
+              <MappingFragment StoreEntitySet="CustomerDetails">
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="CustFirstName" ColumnName="CustFirstName" />
+                <ScalarProperty Name="CustLastName" ColumnName="CustLastName" />
+                <ScalarProperty Name="CustMobileNumber" ColumnName="CustMobileNumber" />
+                <ScalarProperty Name="CustEmailId" ColumnName="CustEmailId" />
+                <ScalarProperty Name="CustPwd" ColumnName="CustPwd" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="AgroStoreModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductDetails">
+            <EntityTypeMapping TypeName="AgroStoreModel.ProductDetail">
+              <MappingFragment StoreEntitySet="ProductDetails">
+                <ScalarProperty Name="ProdID" ColumnName="ProdID" />
+                <ScalarProperty Name="ProdName" ColumnName="ProdName" />
+                <ScalarProperty Name="ProdImage" ColumnName="ProdImage" />
+                <ScalarProperty Name="ProdPrice" ColumnName="ProdPrice" />
+                <ScalarProperty Name="ProdMRP" ColumnName="ProdMRP" />
+                <ScalarProperty Name="ProdSavings" ColumnName="ProdSavings" />
+                <ScalarProperty Name="ProdQuantity" ColumnName="ProdQuantity" />
+                <ScalarProperty Name="isAvailable" ColumnName="isAvailable" />
+                <ScalarProperty Name="ProdCategory" ColumnName="ProdCategory" />
+                <ScalarProperty Name="ProdCategoryID" ColumnName="ProdCategoryID" />
+                <ScalarProperty Name="ProdDescription" ColumnName="ProdDescription" />
+                <ScalarProperty Name="ProdExpiryDate" ColumnName="ProdExpiryDate" />
+                <ScalarProperty Name="ProdSize" ColumnName="ProdSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminLogins">
+            <EntityTypeMapping TypeName="AgroStoreModel.AdminLogin">
+              <MappingFragment StoreEntitySet="AdminLogin">
+                <ScalarProperty Name="adPassword" ColumnName="adPassword" />
+                <ScalarProperty Name="adMobileNumber" ColumnName="adMobileNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

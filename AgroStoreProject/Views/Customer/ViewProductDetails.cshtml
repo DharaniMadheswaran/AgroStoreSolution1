@@ -1,0 +1,107 @@
+﻿@model IEnumerable<AgroStoreProject.Models.ProductDetail>
+
+@{
+    ViewBag.Title = "ViewProductDetails";
+    Layout = "~/Views/Shared/_LayoutPageCustomer.cshtml";
+
+}
+
+<h2>ViewProductDetails</h2>
+
+<p>
+    @Html.ActionLink("Cart", "ViewCart")
+    @Html.ActionLink("MyOrders", "ViewOrderDetails")
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdMRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdSavings)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdCategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdSize)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdName)
+        </td>
+        <td>
+            <img src="@Url.Content(item.ProdImage)" width="75" height="75"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdMRP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdSavings)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdCategoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdExpiryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdSize)
+        </td>
+        <td>
+            @Html.ActionLink("Add to Cart", "AddToCart",new { Pid=item.ProdID})
+        </td>
+    </tr>
+}
+
+</table>
