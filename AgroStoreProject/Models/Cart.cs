@@ -11,14 +11,20 @@ namespace AgroStoreProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModels.DataAnnotations;
     public partial class Cart
     {
+        [Display(Name="Cart ID")]
         public int CartID { get; set; }
+        [Display(Name="Mobile Number")]
         public string MobileNumber { get; set; }
+        [Display(Name="Product ID")]
         public string ProdID { get; set; }
+        [Display(Name="Product Price")]
         public Nullable<double> CartProdPrice { get; set; }
+        [Display(Name="Quantity")]
         public Nullable<int> CartProdQty { get; set; }
+        [Display(Name="Cart Bill")]
         public Nullable<double> CartBill { get; set; }
     
         public virtual CustomerDetail CustomerDetail { get; set; }
